@@ -4,6 +4,7 @@ import light from './styles/themes/light'
 import dark from './styles/themes/dark'
 import Header from './components/Header'
 import { GlobalStyle } from './styles/global'
+import { Dashboard } from './components/Dashboard'
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <GlobalStyle/>
       <Header toggleTheme={toggleTheme}/>
     </div>
+    <Dashboard />
     </ThemeProvider>
   );
 }

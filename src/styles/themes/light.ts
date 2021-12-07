@@ -6,6 +6,8 @@ export default {
     secundary: '#C6F6D5',
 
     background: '#f5f5f5',
-    text: '#333'
-  }
+    text: '#333',
+    bgcard: '#E5E5E5',
+    bgbutton:'#38A169',
+  } 
 }

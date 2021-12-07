@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import Switch from 'react-switch';
 import { ThemeContext} from 'styled-components'
-import { Link } from 'react-router-dom'
 import { Container, Content} from './styles'
 import { shade } from 'polished'
 import logoImg from '../../assets/logo.png'
+
 
 interface Props {
   toggleTheme(): void;
@@ -28,7 +28,7 @@ const Header: React.FC<Props> = ({toggleTheme}) => {
       offColor={shade(0.15, colors.primary)}
       onColor={colors.secundary}
       />
-        <button type="button">New patient</button>
+        
       </Content>
     </Container>
   )
