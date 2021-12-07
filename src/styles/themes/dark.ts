@@ -7,7 +7,9 @@ export default {
 
     background: '#222',
     text: '#fff',
-    bgcard: '#121212',
+    bgcard: '#333',
     bgbutton:'#38A169',
+    coloradmission: '#944',
+    colorwithdraw: '#38A169'
   },
 };

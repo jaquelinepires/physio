@@ -10,6 +10,8 @@ declare module 'styled-components' {
       text: string;
       bgcard: string;
       bgbutton: string;
+      coloradmission: string;
+      colorwithdraw: string;
     }
   }
 }
