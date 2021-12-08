@@ -9,7 +9,7 @@ export default {
     text: '#fff',
     bgcard: '#333',
     bgbutton:'#38A169',
-    coloradmission: '#944',
+    coloradmission: '#C53030',
     colorwithdraw: '#38A169'
   },
 };

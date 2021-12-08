@@ -15,9 +15,13 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+      
     }
     p {
       font-size: 1.5rem;
+    }
+    img {
+      margin-left: 1rem;
     }
     }
     strong {
