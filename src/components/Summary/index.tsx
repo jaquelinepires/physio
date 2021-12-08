@@ -2,10 +2,14 @@ import { Container } from "./styles";
 import income from '../../assets/income.svg'
 import outcome from '../../assets/outcome.svg'
 
-export function Summary() {
+interface SummaryProps {
+  onOpenNewAnotationsModal: () => void;
+}
+
+export function Summary({onOpenNewAnotationsModal}:SummaryProps) {
   return (
     <Container>
-      <button type="button">Novo paciente</button>
+      <button type="button" onClick={onOpenNewAnotationsModal}>Novo paciente</button>
       <div>
         <header>
           <p>Pacientes</p>
@@ -26,6 +30,7 @@ export function Summary() {
         </header>
           <strong>0</strong>
       </div>
+
     </Container>
-  ) 
-}
+      ) 
+    }

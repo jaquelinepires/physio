@@ -5,9 +5,13 @@ import dark from './styles/themes/dark'
 import Header from './components/Header'
 import { GlobalStyle } from './styles/global'
 import { Dashboard } from './components/Dashboard'
-
+import Modal from 'react-modal'
+import { useState } from 'react'
 
 const App = () => {
+
+  
+
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light)
 
   const toggleTheme = () => {
@@ -21,6 +25,7 @@ const App = () => {
       <Header toggleTheme={toggleTheme}/>
     </div>
     <Dashboard />
+   
     </ThemeProvider>
   );
 }
