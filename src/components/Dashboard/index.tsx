@@ -4,6 +4,7 @@ import { Anotations } from "../Anotations";
 import { Summary } from "../Summary";
 import { Container } from "./styles";
 import Modal from 'react-modal'
+import { NewAnotationsModal } from "../NewAnotationsModal";
 
 Modal.setAppElement('#root');
 
@@ -22,12 +23,11 @@ export function Dashboard() {
     <Container>
       <Summary onOpenNewAnotationsModal={handleOpenNewAnotationsModal}/>
       <Anotations />
-      <Modal 
-    isOpen={isNewAnotationsModalOpen} 
-    onRequestClose={handleCloseNewAnotationsModal}
-    >
-      <h2>Novo paciente</h2>
-    </Modal>
+      <NewAnotationsModal
+        isOpen={isNewAnotationsModalOpen}
+        onRequestClose={handleCloseNewAnotationsModal}
+       />
+
     </Container>
   )
 }
