@@ -12,6 +12,10 @@ declare module 'styled-components' {
       bgbutton: string;
       coloradmission: string;
       colorwithdraw: string;
+      overlay: string;
+      bgmodal: string;
+      bginput:string;
+      bgborder: string;
     }
   }
 }

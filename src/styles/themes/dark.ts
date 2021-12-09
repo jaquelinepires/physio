@@ -10,6 +10,10 @@ export default {
     bgcard: '#333',
     bgbutton:'#38A169',
     coloradmission: '#C53030',
-    colorwithdraw: '#38A169'
+    colorwithdraw: '#38A169',
+    overlay:'rgba(0, 0, 0, 0.5)',
+    bgmodal: '#333',
+    bginput:'#333',
+    bgborder:'#d7d7d7' 
   },
 };
