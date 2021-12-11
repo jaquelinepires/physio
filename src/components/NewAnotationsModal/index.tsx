@@ -1,6 +1,9 @@
 import Modal from 'react-modal'
-import { Container } from './styles'
+import { Container, AnotationsTypeContainer } from './styles'
 import close from '../../assets/close.svg'
+import income from '../../assets/income.svg'
+import outcome from '../../assets/outcome.svg'
+
 interface NewAnotationsModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
@@ -30,6 +33,20 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalP
          <textarea 
           placeholder="Histório Clínico" 
         />
+      <AnotationsTypeContainer>
+        <button
+        type="button"
+        >
+          <img src={income} alt="Prorrogação" />
+          <span>Prorrogação</span>
+        </button>
+        <button
+        type="button"
+        >
+          <img src={outcome} alt="Alta" />
+          <span>Alta</span>
+        </button>
+      </AnotationsTypeContainer>
        <button type="submit">Cadastrar</button>
       </Container>
     </Modal>
