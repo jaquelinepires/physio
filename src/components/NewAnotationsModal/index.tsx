@@ -41,6 +41,7 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalP
         type="button"
         onClick={() => {setType('anotations')}}
         isActive={type === 'anotations'}
+        activeColor="green"
         >
           <img src={income} alt="Prorrogação" />
           <span>Prorrogação</span>
@@ -49,6 +50,7 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalP
         type="button"
         onClick={() => {setType('withdraw')}}
         isActive={type === 'withdraw'}
+        activeColor="red"
         >
           <img src={outcome} alt="Alta" />
           <span>Alta</span>
