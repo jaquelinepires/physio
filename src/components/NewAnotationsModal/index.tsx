@@ -1,8 +1,9 @@
 import Modal from 'react-modal'
-import { Container, AnotationsTypeContainer } from './styles'
+import { Container, AnotationsTypeContainer, RadioBox } from './styles'
 import close from '../../assets/close.svg'
 import income from '../../assets/income.svg'
 import outcome from '../../assets/outcome.svg'
+import { useState } from 'react'
 
 interface NewAnotationsModalProps {
   isOpen: boolean;
@@ -10,6 +11,8 @@ interface NewAnotationsModalProps {
 }
 
 export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalProps) {
+  const [type, setType] = useState('anotations')
+
   return (
     <Modal 
     isOpen={isOpen} 
@@ -34,18 +37,22 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalP
           placeholder="Histório Clínico" 
         />
       <AnotationsTypeContainer>
-        <button
+        <RadioBox
         type="button"
+        onClick={() => {setType('anotations')}}
+        isActive={type === 'anotations'}
         >
           <img src={income} alt="Prorrogação" />
           <span>Prorrogação</span>
-        </button>
-        <button
+        </RadioBox>
+        <RadioBox
         type="button"
+        onClick={() => {setType('withdraw')}}
+        isActive={type === 'withdraw'}
         >
           <img src={outcome} alt="Alta" />
           <span>Alta</span>
-        </button>
+        </RadioBox>
       </AnotationsTypeContainer>
        <button type="submit">Cadastrar</button>
       </Container>
