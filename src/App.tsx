@@ -5,10 +5,9 @@ import dark from './styles/themes/dark'
 import Header from './components/Header'
 import { GlobalStyle } from './styles/global'
 import { Dashboard } from './components/Dashboard'
+import { AnotationsProvider } from './hooks/useAnotations'
 
 const App = () => {
-
-  
 
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light)
 
@@ -17,6 +16,7 @@ const App = () => {
   }
 
   return (
+    <AnotationsProvider>
     <ThemeProvider theme={theme}>
     <div className="App">
       <GlobalStyle/>
@@ -25,6 +25,7 @@ const App = () => {
     <Dashboard />
    
     </ThemeProvider>
+    </AnotationsProvider>
   );
 }
 

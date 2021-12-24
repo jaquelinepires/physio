@@ -4,26 +4,34 @@ import { Container, AnotationsTypeContainer, RadioBox } from './styles'
 import close from '../../assets/close.svg'
 import income from '../../assets/income.svg'
 import outcome from '../../assets/outcome.svg'
-import { api } from '../../services/api'
+import { useAnotations } from '../../hooks/useAnotations'
 
-interface NewAnotationsModalProps {
+interface NewAnotationModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalProps) {
+export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationModalProps) {
+  const { createAnotation } = useAnotations();
+
   const [name, setName] = useState('')
   const [report, setReport] = useState('')
   const [type, setType] = useState('anotations')
 
-  function handleCreateNewAnotations(event: FormEvent) {
-   event.preventDefault()
+  async function handleCreateNewAnotation(event: FormEvent) {
+   event.preventDefault();
 
-   const data = {
-     name, 
-     report,
-   };
-   api.post('./anotations', data)
+   await createAnotation({
+    name,
+    report,
+    type
+   })
+
+   setName('');
+   setReport('');
+   setType('anotations');
+   onRequestClose();
+
   }
 
   return (
@@ -41,7 +49,7 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalP
         <img src={close} alt="fechar modal" />
       </button>
 
-      <Container onSubmit={handleCreateNewAnotations}>
+      <Container onSubmit={handleCreateNewAnotation}>
         <h2>Novo paciente</h2>
         <input 
           placeholder="Nome Completo Paciente"

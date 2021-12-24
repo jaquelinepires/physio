@@ -1,21 +1,10 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useAnotations } from "../../hooks/useAnotations";
 import { Container } from "./styles";
 
-interface Anotation {
-  id: number,
-  name: string,
-  report: string,
-  type: string,
-  createAt: string,
-}
-export function Anotations() {
-  const [anotations, setAnotations] = useState<Anotation[]>([]);
 
-    useEffect(() => {
-      api.get('anotations')
-      .then(response => setAnotations(response.data.anotations))
-    }, []);
+export function Anotations() {
+  const { anotations } = useAnotations()
+  
 
   return (
     <Container>
@@ -34,7 +23,11 @@ export function Anotations() {
               <td>{anotation.name}</td>
               <td >{anotation.report}</td>
               <td>{anotation.type}</td>
-              <td>{anotation.createAt}</td>
+              <td>
+                {new Intl.DateTimeFormat('pt-BR').format(
+                  new Date (anotation.createAt)
+                  )}
+              </td>
             </tr>
             ))}
         </tbody>

@@ -1,12 +1,30 @@
-import { Container } from "./styles";
+import { useAnotations } from "../../hooks/useAnotations";
 import income from '../../assets/income.svg'
 import outcome from '../../assets/outcome.svg'
+import { Container } from "./styles";
 
 interface SummaryProps {
   onOpenNewAnotationsModal: () => void;
 }
 
 export function Summary({onOpenNewAnotationsModal}:SummaryProps) {
+  const { anotations } = useAnotations();
+
+  const summary = anotations.reduce((acc, anotation) => {
+    if (anotation.type === 'alta') {
+      acc.alta ++
+      acc.total ++
+    } else {
+      acc.prorrogacao ++
+      acc.total ++
+    }
+    return acc;
+  }, {
+    alta: 0,
+    prorrogacao: 0,
+    total: 0,
+
+  });
   return (
     <Container>
       <button type="button" onClick={onOpenNewAnotationsModal}>Novo paciente</button>
@@ -14,21 +32,21 @@ export function Summary({onOpenNewAnotationsModal}:SummaryProps) {
         <header>
           <p>Pacientes</p>
         </header>
-          <strong>0</strong>
+          <strong>{summary.total}</strong>
       </div>
       <div>
         <header>
           <p>Prorrogação</p>
           <img src={income} alt="Admisson" />
         </header>
-          <strong>0</strong>
+          <strong>{summary.prorrogacao}</strong>
       </div>
       <div>
         <header>
           <p>Alta</p>
           <img src={outcome} alt="Admisson" />
         </header>
-          <strong>0</strong>
+          <strong>{summary.alta}</strong>
       </div>
 
     </Container>
