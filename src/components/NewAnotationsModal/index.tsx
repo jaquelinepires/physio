@@ -4,6 +4,7 @@ import { Container, AnotationsTypeContainer, RadioBox } from './styles'
 import close from '../../assets/close.svg'
 import income from '../../assets/income.svg'
 import outcome from '../../assets/outcome.svg'
+import { api } from '../../services/api'
 
 interface NewAnotationsModalProps {
   isOpen: boolean;
@@ -18,10 +19,11 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalP
   function handleCreateNewAnotations(event: FormEvent) {
    event.preventDefault()
 
-   console.log(
+   const data = {
      name, 
      report,
-   )
+   };
+   api.post('./anotations', data)
   }
 
   return (

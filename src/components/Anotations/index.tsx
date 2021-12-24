@@ -1,13 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Container } from "./styles";
 
+interface Anotation {
+  id: number,
+  name: string,
+  report: string,
+  type: string,
+  createAt: string,
+}
 export function Anotations() {
+  const [anotations, setAnotations] = useState<Anotation[]>([]);
 
     useEffect(() => {
       api.get('anotations')
-      .then(response => console.log(response.data))
-    },[])
+      .then(response => setAnotations(response.data.anotations))
+    }, []);
 
   return (
     <Container>
@@ -16,20 +24,19 @@ export function Anotations() {
           <tr>
           <th>Nome Paciente</th>
           <th>Relatório</th>
+          <th>Status</th>
           <th>Data</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="admission">João cardoso</td>
-            <td className="admission">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis est perspiciatis optio. Non mollitia blanditiis adipisci rerum reiciendis ea, possimus odit perspiciatis repellat vitae beatae quibusdam quae sint obcaecati sunt.</td>
-            <td className="admission">12/08/2001</td>
-          </tr>
-          <tr>
-            <td className="withdraw">João cardoso</td>
-            <td className="withdraw">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis est perspiciatis optio. Non mollitia blanditiis adipisci rerum reiciendis ea, possimus odit perspiciatis repellat vitae beatae quibusdam quae sint obcaecati sunt.</td>
-            <td className="withdraw">12/08/2001</td>
-          </tr>
+          {anotations.map(anotation => (
+              <tr key={anotation.id}>
+              <td>{anotation.name}</td>
+              <td >{anotation.report}</td>
+              <td>{anotation.type}</td>
+              <td>{anotation.createAt}</td>
+            </tr>
+            ))}
         </tbody>
       </table>
     </Container>
