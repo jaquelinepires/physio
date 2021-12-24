@@ -1,9 +1,9 @@
+import { FormEvent, useState } from 'react'
 import Modal from 'react-modal'
 import { Container, AnotationsTypeContainer, RadioBox } from './styles'
 import close from '../../assets/close.svg'
 import income from '../../assets/income.svg'
 import outcome from '../../assets/outcome.svg'
-import { useState } from 'react'
 
 interface NewAnotationsModalProps {
   isOpen: boolean;
@@ -11,7 +11,18 @@ interface NewAnotationsModalProps {
 }
 
 export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalProps) {
+  const [name, setName] = useState('')
+  const [report, setReport] = useState('')
   const [type, setType] = useState('anotations')
+
+  function handleCreateNewAnotations(event: FormEvent) {
+   event.preventDefault()
+
+   console.log(
+     name, 
+     report,
+   )
+  }
 
   return (
     <Modal 
@@ -28,13 +39,17 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationsModalP
         <img src={close} alt="fechar modal" />
       </button>
 
-      <Container>
+      <Container onSubmit={handleCreateNewAnotations}>
         <h2>Novo paciente</h2>
         <input 
           placeholder="Nome Completo Paciente"
+          value={name}
+          onChange={event => setName(event.target.value)}
         />
          <textarea 
-          placeholder="Histório Clínico" 
+          placeholder="Histório Clínico"
+          value={report} 
+          onChange={event => setReport(event.target.value)}
         />
       <AnotationsTypeContainer>
         <RadioBox
