@@ -16,6 +16,7 @@ declare module 'styled-components' {
       bgmodal: string;
       bginput:string;
       bgborder: string;
+      bgedit: string;
     }
   }
 }

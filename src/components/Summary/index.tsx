@@ -37,14 +37,14 @@ export function Summary({onOpenNewAnotationsModal}:SummaryProps) {
       <div>
         <header>
           <p>Prorrogação</p>
-          <img src={income} alt="Admisson" />
+          <img src={income} alt="prorogacao" />
         </header>
           <strong>{summary.prorrogacao}</strong>
       </div>
       <div>
         <header>
           <p>Alta</p>
-          <img src={outcome} alt="Admisson" />
+          <img src={outcome} alt="alta" />
         </header>
           <strong>{summary.alta}</strong>
       </div>

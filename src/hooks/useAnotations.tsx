@@ -2,11 +2,11 @@ import { createContext, ReactNode, useContext, useEffect, useState} from 'react'
 import { api } from '../services/api';
 
 interface Anotation {
-  id: number,
-  name: string,
-  report: string,
-  type: string,
-  createAt: string,
+  id: number;
+  name: string;
+  report: string;
+  type: string;
+  createAt: string;
 }
 
 type AnotationInput = Omit<Anotation, 'id' | 'createAt'>
@@ -35,9 +35,9 @@ export function AnotationsProvider({children}: AnotationsProviderProps) {
     }, []);
 
     async function createAnotation(anotationInput: AnotationInput) {
-      const response = await api.post('./anotations', {
+      const response = await api.post('/anotations', {
       ...anotationInput,
-      createdAt: new Date(),
+      createAt: new Date(),
     })
       const { anotation } = response.data;
 

@@ -20,14 +20,28 @@ table {
     background: ${props => props.theme.colors.bgcard};
     border-radius: 0.25rem;
 
-    &.admission { 
+    &.alta { 
       color: ${props => props.theme.colors.coloradmission}
     }
     
-    &.withdraw { 
+    &.prorrogacao { 
       color: ${props => props.theme.colors.colorwithdraw}
     }
-  
+}
+button {
+  padding: 0.5;
+  border-radius: 0.25rem;
+  margin: 1rem 1.5rem 0 0;
+  transition: filter 0.2s;
+  border: 0;
+  background: ${props => props.theme.colors.bgedit};
+ 
+&:hover {
+    filter: brightness(0.9);
+}
+}
+img {
+  margin-right: 0.2rem;
 }
 }
 `

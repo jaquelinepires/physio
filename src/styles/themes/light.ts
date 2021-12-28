@@ -14,6 +14,7 @@ export default {
     overlay:'rgba(0,0,0,0.5)',
     bgmodal: '#f0f2f5',
     bginput:'#e7e9ee',
-    bgborder:'#d7d7d7' 
+    bgborder:'#d7d7d7',
+    bgedit: '#e5e5e5',
   } 
 }

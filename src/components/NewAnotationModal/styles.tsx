@@ -13,15 +13,18 @@ export const Container = styled.form`
       border-radius: 0.25rem;
       color: ${props => props.theme.colors.text};
       
+      
 
       background: ${props => props.theme.colors.bginput};
       border: 1px solid #d7d7d7;
 
       font-weight: 400;
       font-size:1rem;
+      padding:1rem;
     
       & + input {
         margin-top: 1rem;
+       
 
       }
     }
@@ -34,7 +37,7 @@ export const Container = styled.form`
       margin-top: 1rem;
       border-radius: 0.25rem;
       border: 1px solid #d7d7d7;
-      padding: 0 0.15rem;
+      padding:1rem;
       color: ${props => props.theme.colors.text};
 
       font-weight: 400;

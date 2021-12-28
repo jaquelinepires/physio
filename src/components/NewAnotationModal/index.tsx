@@ -1,22 +1,22 @@
 import { FormEvent, useState } from 'react'
 import Modal from 'react-modal'
+import { useAnotations } from '../../hooks/useAnotations'
 import { Container, AnotationsTypeContainer, RadioBox } from './styles'
 import close from '../../assets/close.svg'
 import income from '../../assets/income.svg'
 import outcome from '../../assets/outcome.svg'
-import { useAnotations } from '../../hooks/useAnotations'
 
 interface NewAnotationModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
 }
 
-export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationModalProps) {
+export function NewAnotationModal({isOpen, onRequestClose}: NewAnotationModalProps) {
   const { createAnotation } = useAnotations();
 
   const [name, setName] = useState('')
   const [report, setReport] = useState('')
-  const [type, setType] = useState('anotations')
+  const [type, setType] = useState('alta')
 
   async function handleCreateNewAnotation(event: FormEvent) {
    event.preventDefault();
@@ -24,12 +24,12 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationModalPr
    await createAnotation({
     name,
     report,
-    type
-   })
+    type,
+   });
 
    setName('');
    setReport('');
-   setType('anotations');
+   setType('alta');
    onRequestClose();
 
   }
@@ -64,22 +64,24 @@ export function NewAnotationsModal({isOpen, onRequestClose}: NewAnotationModalPr
       <AnotationsTypeContainer>
         <RadioBox
         type="button"
-        onClick={() => {setType('anotations')}}
-        isActive={type === 'anotations'}
+        onClick={() => setType('prorrogacao')}
+        isActive={type === 'prorrogacao'}
         activeColor="green"
         >
-          <img src={income} alt="Prorrogação" />
-          <span>Prorrogação</span>
+          <img src={income} alt="prorrogacao" />
+          <span>Prorrogacao</span>
         </RadioBox>
         <RadioBox
         type="button"
-        onClick={() => {setType('withdraw')}}
-        isActive={type === 'withdraw'}
+        onClick={() => setType('alta')}
+        isActive={type === 'alta'}
         activeColor="red"
         >
-          <img src={outcome} alt="Alta" />
+          <img src= {outcome} alt="alta" />
           <span>Alta</span>
         </RadioBox>
+
+        
       </AnotationsTypeContainer>
        <button type="submit">Cadastrar</button>
       </Container>
